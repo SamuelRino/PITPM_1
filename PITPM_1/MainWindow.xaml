@@ -1,0 +1,53 @@
+﻿<Window x:Class="PITPM_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ScottPlot="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
+        xmlns:local="clr-namespace:PITPM_1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        
+        <ScottPlot:WpfPlot x:Name="MyPlot"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+
+                <Style TargetType="StackPanel" x:Key="spIn">
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="Width" Value="130"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <ComboBox x:Name="cbType" Width="120" IsEditable="True" IsReadOnly="True" Text="Тип прогрессии" Margin="10" VerticalAlignment="Center">
+                <ComboBoxItem Content="Арифметическая"/>
+                <ComboBoxItem Content="Геометрическая"/>
+            </ComboBox>
+
+            <StackPanel Style="{StaticResource spIn}">
+                <Label Content="Начальное значение" HorizontalAlignment="Center"/>
+                <TextBox x:Name="tbStartValue"/>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource spIn}">
+                <Label Content="Шаг" HorizontalAlignment="Center"/>
+                <TextBox x:Name="tbStep"/>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource spIn}">
+                <Label Content="Количество точек" HorizontalAlignment="Center"/>
+                <TextBox x:Name="tbCount"/>
+            </StackPanel>
+
+            <Button x:Name="btnSet" Content="Создать" Padding="5" VerticalAlignment="Center" Click="btnSet_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
